@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------
+   Tokens. Light is a cool lightbox; dark is navy ink. Cobalt marks
+   actions. Annotation yellow is reserved for evidence and the playhead.
+   ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --c-bg: #e9edf1;
+  --c-surface: #f6f8fa;
+  --c-raised: #ffffff;
+  --c-sunken: #dfe5eb;
+  --c-ink: #13202e;
+  --c-ink-2: #3a4a5c;
+  --c-muted: #627385;
+  --c-line: #d1d9e1;
+  --c-line-strong: #b6c2ce;
+
+  --c-accent: #2f4bff;
+  --c-accent-ink: #ffffff;
+  --c-accent-soft: #e2e7ff;
+
+  --c-mark: #f5b700;
+  --c-mark-ink: #6b4f00;
+  --c-mark-soft: #fff3c7;
+
+  --c-ok: #0f8a5f;
+  --c-ok-soft: #dcf3e8;
+  --c-bad: #c8312f;
+  --c-bad-soft: #fbe3e2;
+  --c-warn: #a86300;
+  --c-warn-soft: #fdecd2;
+
+  --c-tier-memory: #0e8f80;
+  --c-tier-memory-soft: #d8f1ed;
+  --c-tier-vlm: #6c4ae8;
+  --c-tier-vlm-soft: #e9e3fd;
+  --c-tier-gpu: #d2540a;
+  --c-tier-gpu-soft: #fde6d7;
+  --c-tier-plugin: #b8338f;
+  --c-tier-plugin-soft: #f8e0f0;
+
+  --c-film: #1b2633;
+  --shadow-panel: 0 1px 0 rgb(19 32 46 / 0.04), 0 8px 24px -16px rgb(19 32 46 / 0.25);
+  --shadow-pop: 0 12px 32px -12px rgb(19 32 46 / 0.35), 0 2px 6px rgb(19 32 46 / 0.08);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-bg: #0d1520;
+  --c-surface: #121c29;
+  --c-raised: #192535;
+  --c-sunken: #0a111a;
+  --c-ink: #e4eaf1;
+  --c-ink-2: #b7c3d0;
+  --c-muted: #8394a7;
+  --c-line: #223044;
+  --c-line-strong: #33445b;
+
+  --c-accent: #7088ff;
+  --c-accent-ink: #0d1520;
+  --c-accent-soft: #1f2a55;
+
+  --c-mark: #ffc933;
+  --c-mark-ink: #ffd965;
+  --c-mark-soft: #3a3010;
+
+  --c-ok: #3fcf95;
+  --c-ok-soft: #123326;
+  --c-bad: #ff6b66;
+  --c-bad-soft: #3b1718;
+  --c-warn: #f3a73b;
+  --c-warn-soft: #3a2a10;
+
+  --c-tier-memory: #3ad1bd;
+  --c-tier-memory-soft: #10302d;
+  --c-tier-vlm: #a48cff;
+  --c-tier-vlm-soft: #251d48;
+  --c-tier-gpu: #ff8a45;
+  --c-tier-gpu-soft: #3a2010;
+  --c-tier-plugin: #f077c8;
+  --c-tier-plugin-soft: #3a1631;
+
+  --c-film: #070c12;
+  --shadow-panel: 0 1px 0 rgb(0 0 0 / 0.3), 0 8px 24px -16px rgb(0 0 0 / 0.6);
+  --shadow-pop: 0 16px 40px -12px rgb(0 0 0 / 0.7), 0 2px 6px rgb(0 0 0 / 0.4);
+}
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, sans-serif;
+
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-raised: var(--c-raised);
+  --color-sunken: var(--c-sunken);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-mark: var(--c-mark);
+  --color-mark-ink: var(--c-mark-ink);
+  --color-mark-soft: var(--c-mark-soft);
+  --color-ok: var(--c-ok);
+  --color-ok-soft: var(--c-ok-soft);
+  --color-bad: var(--c-bad);
+  --color-bad-soft: var(--c-bad-soft);
+  --color-warn: var(--c-warn);
+  --color-warn-soft: var(--c-warn-soft);
+  --color-film: var(--c-film);
+  --color-tier-memory: var(--c-tier-memory);
+  --color-tier-memory-soft: var(--c-tier-memory-soft);
+  --color-tier-vlm: var(--c-tier-vlm);
+  --color-tier-vlm-soft: var(--c-tier-vlm-soft);
+  --color-tier-gpu: var(--c-tier-gpu);
+  --color-tier-gpu-soft: var(--c-tier-gpu-soft);
+  --color-tier-plugin: var(--c-tier-plugin);
+  --color-tier-plugin-soft: var(--c-tier-plugin-soft);
+
+  --shadow-panel: var(--shadow-panel);
+  --shadow-pop: var(--shadow-pop);
+
+  --animate-rise: rise 220ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-pulse-soft: pulse-soft 1.6s ease-in-out infinite;
+  --animate-sweep: sweep 1.4s linear infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes sweep {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 0;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--c-bg);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "tnum" 0;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--c-mark-soft);
+    color: var(--c-ink);
+  }
+}
+
+@layer utilities {
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .scroll-quiet {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-line-strong) transparent;
+  }
+  /* Diagonal stripes for in-flight work (running step, uploading bar). */
+  .stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(255 255 255 / 0.22) 0 7px,
+      transparent 7px 14px
+    );
+    background-size: 28px 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

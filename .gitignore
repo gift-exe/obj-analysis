@@ -1,0 +1,32 @@
+# Local state: Postgres cluster, uploaded videos, tool outputs, model weights, logs
+backend/data/
+backend/weights/
+*.pt
+*.log
+
+# Secrets and machine-specific settings (copy backend/.env.example)
+.env
+!.env.example
+
+# Python
+backend/.venv/
+venv/
+.venv/
+**/__pycache__/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Sample videos and evaluation outputs (put sample .mp4 files in the repo root to run the eval)
+*.mp4
+eval/results-*.json
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

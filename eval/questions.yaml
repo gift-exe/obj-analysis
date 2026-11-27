@@ -1,0 +1,84 @@
+# Demo and evaluation questions (see the design doc, "Demo walkthrough").
+# type: yesno | count | when | open.  expected: null = still "to label" frame by frame.
+# window: [t_start, t_end] seconds where the answer is visible (approximate, from 1 fps contact sheets).
+
+- video: yn-scanning.mp4
+  question: How many units of each item type were scanned?
+  type: count
+  # hand-checked frame by frame: 12 units, 6 types
+  expected: {apple: 3, bottle: 3, can: 2, crisps bag: 2, banana bunch: 1, bread: 1}
+- video: yn-scanning.mp4
+  question: Were any items scanned together rather than one at a time?
+  type: yesno
+  expected: "yes"
+  window: [10, 15]  # two cans held together
+- video: yn-scanning.mp4
+  question: How many apples were scanned, and were they scanned individually?
+  type: count
+  expected: 3 apples, one at a time
+  window: [45, 73]
+- video: yn-scanning.mp4
+  question: What was the last item scanned?
+  type: open
+  expected: a blue glass bottle
+  window: [97, 104]
+- video: yn-scanning.mp4
+  question: Did anyone else walk past the checkout?
+  type: yesno
+  expected: "yes"
+  window: [85, 88]
+
+- video: shopping.mp4
+  question: How many people in the foreground are wearing face masks?
+  type: count
+  expected: 3
+- video: shopping.mp4
+  question: Did anyone take a product off the shelf?
+  type: yesno
+  expected: "yes"
+  window: [6, 9]
+- video: shopping.mp4
+  question: Are any store staff visible?
+  type: yesno
+  expected: "yes"
+- video: shopping.mp4
+  question: When does the man in the grey sweatshirt appear, and what is he carrying?
+  type: when
+  expected: from about 0:10, carrying a loaf of bread
+  window: [10, 17]
+
+- video: traffic.mp4
+  question: How many vehicles cross the bottom of the frame?
+  type: count
+  expected: null
+- video: traffic.mp4
+  question: How many motorcycles are visible, and which lane do they use?
+  type: count
+  expected: null
+- video: traffic.mp4
+  question: Is traffic moving or at a standstill?
+  type: open
+  expected: slow-moving and congested
+- video: traffic.mp4
+  question: Does any vehicle use the separated lane on the left?
+  type: yesno
+  expected: null
+
+- video: road-intersect.mp4
+  question: Did a large truck turn at the intersection?
+  type: yesno
+  expected: "yes"
+  window: [6, 15]
+- video: road-intersect.mp4
+  question: How many vehicles pass through the intersection?
+  type: count
+  expected: null
+- video: road-intersect.mp4
+  question: When does the red car cross the intersection?
+  type: when
+  expected: about 0:24-0:28
+  window: [24, 28]
+- video: road-intersect.mp4
+  question: Did any vehicle run a red light?
+  type: yesno
+  expected: uncertain
